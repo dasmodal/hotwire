@@ -1,8 +1,19 @@
 <h1>Images</h1>
 
 <% @images.each do |image| %>
-  <%= tag.section class: "my-5" do %>
-    <%= image_tag image.url, class: "img-thumbnail rounded d-block", alt: image.title %>
+  <%= tag.section class: "my-5", data: { controller: "images" } do %>
+    <%= image_tag image.url, class: "img-thumbnail rounded d-block", alt: image.title, data: { action: "click->images#getUrl" } %>
     <p><%= image.title %></p>
   <% end %>
 <% end %>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+    <div class="d-flex">
+      <div class="toast-body">
+        Image url copied to clipboard
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

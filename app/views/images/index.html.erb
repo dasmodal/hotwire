@@ -2,8 +2,8 @@
 
 <% @images.each do |image| %>
   <%= tag.section class: "my-5", data: { controller: "images toast", action: "images:copy->toast#show" } do %>
-    <%= image_tag image.url, class: "img-thumbnail rounded d-block", alt: image.title, data: { action: "click->images#getUrl" } %>
-    <p><%= image.title %></p>
+    <%= image_tag image.url, class: "img-thumbnail rounded d-block", alt: image.title,
+      data: { action: "click->images#getUrl", images_target: "image" } %>
   <% end %>
 <% end %>
 
